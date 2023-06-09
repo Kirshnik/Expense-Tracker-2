@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Expense Tracker</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+
+    .container {
+      max-width: 400px;
+      margin: 0 auto;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    .input-group {
+      margin-bottom: 10px;
+    }
+
+    .input-group label {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .input-group input[type="text"] {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    .input-group input[type="submit"] {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .expense-list {
+      margin-top: 20px;
+    }
+
+    .expense-item {
+      margin-bottom: 10px;
+      padding: 8px;
+      background-color: #f9f9f9;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Expense Tracker</h1>
+
+    <div class="input-group">
+      <label for="expense-input">Expense:</label>
+      <input type="text" id="expense-input" placeholder="Enter expense description">
+    </div>
+
+    <div class="input-group">
+      <label for="amount-input">Amount:</label>
+      <input type="text" id="amount-input" placeholder="Enter expense amount">
+    </div>
+
+    <div class="input-group">
+      <input type="submit" id="add-expense-btn" value="Add Expense">
+    </div>
+
+    <div class="expense-list">
+      <h2>Expenses:</h2>
+      <ul id="expenses"></ul>
+    </div>
+  </div>
+
+  <script>
+    // Function to handle adding an expense
+    function addExpense() {
+      var expenseInput = document.getElementById("expense-input");
+      var amountInput = document.getElementById("amount-input");
+      var expensesList = document.getElementById("expenses");
+
+      var expense = expenseInput.value;
+      var amount = amountInput.value;
+
+      if (expense === "" || amount === "") {
+        alert("Please enter an expense and amount");
+        return;
+      }
+
+      var listItem = document.createElement("li");
+      listItem.innerText = expense + " - $" + amount;
+
+      expensesList.appendChild(listItem);
+
+      // Clear input fields
+      expenseInput.value = "";
+      amountInput.value = "";
+    }
+
+    // Add event listener to the "Add Expense" button
+    var addExpenseBtn = document.getElementById("add-expense-btn");
+    addExpenseBtn.addEventListener("click", addExpense);
+  </script>
+</body>
+</html>
